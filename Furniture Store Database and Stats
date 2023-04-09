@@ -1,0 +1,35 @@
+-- Create a furniture Store Database.
+
+create table furniture_store (id integer primary key, name text, room text, aisle integer, quantity integer, price integer);
+
+insert into furniture_store values (1, "oven", "kitchen", 1, 5, 1500);
+insert into furniture_store values (2, "fridge", "kitchen", 1, 6, 1365);
+insert into furniture_store values (3, "microwave", "kitchen", 1, 10, 65);
+insert into furniture_store values (4, "table", "kitchen", 2, 4, 200);
+insert into furniture_store values (5, "chair", "kitchen", 2, 6, 45);
+insert into furniture_store values (6, "sofa", "living room", 3, 2, 350);
+insert into furniture_store values (7, "TV stand", "living room", 4, 4, 70);
+insert into furniture_store values (8, "armchair", "living room", 3, 5, 80);
+insert into furniture_store values (9, "TV", "living room", 4, 2, 745);
+insert into furniture_store values (10, "bed", "bedroom", 5, 1, 934);
+insert into furniture_store values (11, "closet", "bedroom", 6, 3, 618);
+insert into furniture_store values (12, "bedside table", "bedroom", 5, 3, 50);
+insert into furniture_store values (13, "dresser", "bedroom", 6, 2, 199);
+insert into furniture_store values (14, "mirror", "bedroom", 7, 5, 63);
+insert into furniture_store values (15, "lamp", "bedroom", 7, 3, 40);
+
+-- display the database sorted by price.
+select * from furniture_store order by price;
+
+-- display the database sorted by aisles.
+select * from furniture_store order by aisle;
+
+-- display total number of items and their sum per room.
+select room, sum(quantity), sum(price) from furniture_store group by room;
+
+-- display items in Aisle 1, sorted by price.
+select * from furniture_store where aisle = "1" group by price;
+
+-- display items from th ekitchen department, where quantity is under 5, so the items can be re-ordered.
+select * from furniture_store where room = "kitchen" and quantity < 5;
+
